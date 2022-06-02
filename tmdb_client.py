@@ -1,15 +1,7 @@
 import requests
 
 API_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMGU4ODRmNzM3MWMzNDIwM2Y3MzZmZWNjODIzNmE1ZCIsInN1YiI6IjYyOTA4YzY1N2Q1ZGI1MTBhNTFlNzFlNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.bCSFcue4zW-DLWIZMa5HULuJV-b5BwW2C5t2jAFrvOg"
-
-def get_popular_movies():
-    endpoint = "https://api.themoviedb.org/3/movie/popular"
-    headers = {
-        "Authorization": f"Bearer {API_TOKEN}"
-    }
-    response = requests.get(endpoint, headers=headers)
-    return response.json()
-    
+ 
 def get_movies(how_many, list_type):
     data = get_movies_list(list_type)
     return data["results"][:how_many]

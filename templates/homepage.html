@@ -7,10 +7,14 @@
         <h1 class="mt-5">Witaj w mojej bibliotece filmów</h1>
         <p class="lead">Znajdziesz tutaj tylko najlepsze tytuły!</p>
         <div class="float-left">
-            <a href="{{ url_for('homepage', list_type='now_playing') }}" class="btn btn-outline-info">Now Playing</a>
-            <a href="{{ url_for('homepage', list_type='upcoming') }}" class="btn btn-outline-info">Upcoming</a>
-            <a href="{{ url_for('homepage', list_type='latest') }}" class="btn btn-outline-info">Latest</a>
-            <a href="{{ url_for('homepage', list_type='top_rated') }}" class="btn btn-outline-info">Top rated</a> 
+            {% for list in list_types %}
+
+            <a href="{{ url_for('homepage', list_type=list) }}" class="btn btn{% if list!= current_list %}-outline{% endif %}-info">
+                
+                {{list|replace("_", " ")|capitalize()}}
+
+            </a>
+            {% endfor %}
         </div>
     </div>
       {% for movie in movies %}
