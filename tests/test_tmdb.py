@@ -1,5 +1,22 @@
 import tmdb_client
 from unittest.mock import Mock
+from app import app
+import pytest
+
+
+@pytest.mark.parametrize('list_type',(
+  ('now_playing', 'upcoming'),
+  ('top_rated', 'popular')
+  ))
+
+def test_list_types(monkeypatch):
+   api_mock = Mock(return_value={'results': []})
+   monkeypatch.setattr("tmdb_client.requests.get", api_mock)
+
+   with app.test_client() as client:
+      response = client.get('/')
+      assert response.status_code == 200
+      api_mock.assert_called_once_with('list_types')
 
 def test_get_movies_list(monkeypatch):
    mock_movies_list = ['Movie 1', 'Movie 2']

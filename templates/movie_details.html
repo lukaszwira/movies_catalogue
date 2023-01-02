@@ -6,7 +6,8 @@
     <h1 class="my-4">
         {{ movie.title }}
     </h1>
-
+    
+    <a href="\" class="btn btn-primary">back</a>
 
     <div class="row">
         <div class="col-md-8">
@@ -34,7 +35,7 @@
                 {% if actor.profile_path %}
                     <img src="{{ tmdb_image_url(actor.profile_path, 'w185') }}" class="figure-img img-fluid rounded" alt="{{ actor.name }}">
                 {% else %}
-                    <img src="https://placehold.it/185x278?text={{ actor.name }}" class="figure-img img-fluid rounded" alt="{{ actor.name }}">
+                    <img src="https://barracuda.sklep.pl/611-tm_large_default/tlok-kompletny-do-silnika-diesla-yanmar-l70-lub-kiporkama-178f.jpg" class="figure-img img-fluid rounded" alt="{{ actor.name }}">
                 {% endif %}
                 <figcaption class="figure-caption">{{ actor.name }} as {{ actor.character }}</figcaption>
             </figure>
